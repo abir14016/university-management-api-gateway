@@ -6,8 +6,8 @@ let redisClient = createClient({
   url: config.redis.url
 });
 
-redisClient.on('error', (err) => logger.error('RedisError', err));
-redisClient.on('connect', (err) => logger.info('✅ Redis connected'));
+redisClient.on('error', (error) => logger.error('❌ RedisError', error));
+redisClient.on('connect', (error) => logger.info(`✅ Redis Connected on port ${config.redis.url}`));
 
 const connect = async (): Promise<void> => {
   await redisClient.connect();
